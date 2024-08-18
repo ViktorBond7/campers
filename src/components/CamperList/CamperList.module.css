@@ -2,11 +2,8 @@
   display: flex;
   gap: 20px;
   display: flex;
-  width: 1400px;
+  /* width: 600px; */
   flex-wrap: wrap;
   /* justify-content: center; */
-}
-
-.contact {
-  height: 100px;
+  flex: 2;
 }

@@ -1,24 +1,24 @@
-import { useEffect } from "react";
+import { Suspense } from "react";
 import "./App.css";
-import SearchBox from "./components/SearchBox/SearchBox";
-import { useDispatch } from "react-redux";
-import { fetchContacts } from "./redux/contactsOps";
-import ContactList from "./components/ContactList/ContactList";
-import ContactForm from "./components/ContactForm/ContactForm";
+
+import Navigation from "./components/Navigation/Navigation";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
+import CamperPage from "./pages/CampersPage/CampersPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
     <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
+      <Navigation />
+
+      <Suspense fallback={<b>Loading page...</b>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<CamperPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }

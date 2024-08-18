@@ -5,7 +5,7 @@ import { selectError, selectCampers } from "../../redux/campersSlice";
 import CamperItem from "../CamperItem/CamperItem";
 
 const CamperList = () => {
-  const visibleCampers = useSelector(selectCampers);
+  const campers = useSelector(selectCampers);
   const error = useSelector(selectError);
 
   return (
@@ -14,7 +14,7 @@ const CamperList = () => {
         <p>Oops, there was an error, please try reloading!!! {error}</p>
       )}
       <ul className={css.list}>
-        {visibleCampers.map((camper) => (
+        {campers.map((camper) => (
           <CamperItem key={camper._id} camper={camper} />
         ))}
       </ul>

@@ -1,0 +1,39 @@
+.modalContent {
+  width: 902px;
+  height: auto;
+}
+.iconns {
+  stroke: black;
+}
+.btn {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: none;
+}
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.camperImg {
+  max-width: 290px;
+  height: 310px;
+  border-radius: 10px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.containerImg {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.autlet {
+  display: flex;
+  gap: 40px;
+  font-weight: 600;
+  font-size: 20px;
+}
+.description {
+  margin-bottom: 44px;
+}

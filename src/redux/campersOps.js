@@ -5,9 +5,14 @@ axios.defaults.baseURL = "https://66bdcaa374dfc195586d9dcb.mockapi.io";
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchAll",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const response = await axios.get("/campers");
+      const response = await axios.get("/campers", {
+        params: {
+          limit: 4,
+          page: page,
+        },
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -1,10 +1,29 @@
+import { useDispatch, useSelector } from "react-redux";
 import IconSvg from "../IconSvg/IconSvg";
 import RetingLocation from "../RetingLocation/RetingLocation";
 import ShowMore from "../ShowMore/ShowMore";
 
 import css from "./CamperItem.module.css";
+import {
+  addFavorite,
+  removeFavorite,
+  selectFavorites,
+} from "../../redux/campersSlice";
 
 const CamperItem = ({ camper }) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+
+  const isFavorite = favorites.some((fav) => fav._id === camper._id);
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(camper._id));
+    } else {
+      dispatch(addFavorite(camper));
+    }
+  };
+
   return (
     <li className={css.item}>
       <div className={css.containerImg}>
@@ -19,12 +38,17 @@ const CamperItem = ({ camper }) => {
           <p>{camper.name}</p>
           <p className={css.pagePrice}>
             €{camper.price}
-            <IconSvg
-              iconName="icon-favorite"
-              width="24"
-              height="24"
-              className={css.iconns}
-            />
+            <button
+              className={css.buttonFavorites}
+              onClick={handleFavoriteClick}
+            >
+              <IconSvg
+                iconName="icon-favorite"
+                width="24"
+                height="24"
+                className={isFavorite ? css.iconnsRed : css.iconns}
+              />
+            </button>
           </p>
         </div>
         <RetingLocation camper={camper} />

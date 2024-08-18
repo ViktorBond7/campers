@@ -1,11 +1,9 @@
 .list {
   gap: 20px;
   display: flex;
-  /* width: 600px; */
   flex-wrap: wrap;
-  /* justify-content: center; */
   flex: 2;
-  /* flex-wrap: nowrap; */
+  margin-top: 50px;
 }
 .loadMore {
   display: flex;

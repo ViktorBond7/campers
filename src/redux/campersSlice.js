@@ -6,6 +6,7 @@ export const selectCampers = (state) => state.campers.items;
 export const selectLoading = (state) => state.campers.loading;
 export const selectHasMore = (state) => state.campers.hasMore;
 export const selectPage = (state) => state.campers.page;
+export const selectFavorites = (state) => state.campers.favorites;
 
 const campersSlice = createSlice({
   name: "campers",
@@ -15,11 +16,25 @@ const campersSlice = createSlice({
     error: null,
     hasMore: true,
     page: 1,
+    favorites: JSON.parse(localStorage.getItem("favorites")) || [],
   },
 
   reducers: {
     incrementPage(state) {
       state.page += 1;
+    },
+    addFavorite(state, action) {
+      if (!state.favorites.find((item) => item._id === action.payload._id)) {
+        state.favorites.push(action.payload);
+        localStorage.setItem("favorites", JSON.stringify(state.favorites));
+      }
+    },
+
+    removeFavorite(state, action) {
+      state.favorites = state.favorites.filter(
+        (item) => item._id !== action.payload
+      );
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
   },
 
@@ -53,6 +68,7 @@ const campersSlice = createSlice({
   },
 });
 
-export const { incrementPage } = campersSlice.actions;
+export const { incrementPage, addFavorite, removeFavorite } =
+  campersSlice.actions;
 
 export default campersSlice.reducer;

@@ -1,12 +1,7 @@
 .container {
-  border: solid 2px;
+  /* border: solid 2px; */
   width: 408px;
   height: 400px;
   flex: 1;
   margin-right: 18px;
-}
-.iconns {
-  border-radius: 2px;
-  /* stroke: 101828; */
-  fill: 101828;
 }

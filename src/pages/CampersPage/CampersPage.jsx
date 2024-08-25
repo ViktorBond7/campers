@@ -24,7 +24,7 @@ const CamperPage = () => {
     <div>
       <div className={css.container}>
         <Filters />
-        <CamperList handleLoadMore={handleLoadMore} />
+        <CamperList />
       </div>
       <LoadMore className={css.button} handleLoadMore={handleLoadMore} />
     </div>

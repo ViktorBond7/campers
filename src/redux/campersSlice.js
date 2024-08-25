@@ -47,15 +47,13 @@ const campersSlice = createSlice({
 
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.loading = false;
-        const newItems = action.payload;
 
-        state.items = [
-          ...state.items,
-          ...newItems.filter(
-            (item) =>
-              !state.items.some((existingItem) => existingItem._id === item._id)
-          ),
-        ];
+        const newItems = action.payload.filter(
+          (item) =>
+            !state.items.some((existingItem) => existingItem._id === item._id)
+        );
+
+        state.items = [...state.items, ...newItems];
 
         if (action.payload.length < 4) {
           state.hasMore = false;

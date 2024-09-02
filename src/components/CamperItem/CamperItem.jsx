@@ -9,6 +9,7 @@ import {
   removeFavorite,
   selectFavorites,
 } from "../../redux/campersSlice";
+import { formatPrice } from "../../utils/formatPrice";
 
 const CamperItem = ({ camper }) => {
   const dispatch = useDispatch();
@@ -37,7 +38,8 @@ const CamperItem = ({ camper }) => {
         <div className={css.itemHeader}>
           <p>{camper.name}</p>
           <p className={css.pagePrice}>
-            €{camper.price}
+            {/* €{camper.price} */}
+            {`€${formatPrice(camper.price)}`}
             <button
               className={css.buttonFavorites}
               onClick={handleFavoriteClick}

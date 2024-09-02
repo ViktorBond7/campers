@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import IconSvg from "../IconSvg/IconSvg";
 import RetingLocation from "../RetingLocation/RetingLocation";
 import css from "./ModalScowMore.module.css";
@@ -7,6 +6,7 @@ import { useState } from "react";
 import Features from "../Features/Features";
 import Reviews from "../Reviews/Reviews";
 import clsx from "clsx";
+import { formatPrice } from "../../utils/formatPrice";
 
 const customStyles = {
   content: {
@@ -58,7 +58,7 @@ const ModalShowMore = ({ camper, isOpen, closeModal }) => {
         </div>
         <RetingLocation camper={camper} />
 
-        <p>€{camper.price}</p>
+        <p>{`€${formatPrice(camper.price)}`}</p>
 
         <div className={css.containerImg}>
           {camper.gallery.map((imgSrc, index) => (

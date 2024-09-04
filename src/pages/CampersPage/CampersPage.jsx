@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import CamperList from "../../components/CamperList/CamperList";
 import { useEffect } from "react";
-import { fetchCampers } from "../../redux/campersOps";
+import { fetchCampers } from "../../redux/campers/campersOps";
 import css from "./CampersPage.module.css";
 import Filters from "../../components/Filters/Filters";
-import { incrementPage, selectPage } from "../../redux/campersSlice";
 import LoadMore from "../../components/LoadMore/LoadMore";
+import { incrementPage, selectPage } from "../../redux/campers/campersSlice";
 
 const CamperPage = () => {
   const dispatch = useDispatch();

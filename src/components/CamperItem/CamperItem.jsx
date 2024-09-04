@@ -4,12 +4,12 @@ import RetingLocation from "../RetingLocation/RetingLocation";
 import ShowMore from "../ShowMore/ShowMore";
 
 import css from "./CamperItem.module.css";
+import { formatPrice } from "../../utils/formatPrice";
 import {
   addFavorite,
   removeFavorite,
   selectFavorites,
-} from "../../redux/campersSlice";
-import { formatPrice } from "../../utils/formatPrice";
+} from "../../redux/campers/campersSlice";
 
 const CamperItem = ({ camper }) => {
   const dispatch = useDispatch();

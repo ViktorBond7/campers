@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import css from "./LoadMore.module.css";
-import { selectHasMore, selectLoading } from "../../redux/campersSlice";
+import { selectHasMore, selectLoading } from "../../redux/campers/campersSlice";
 
 const LoadMore = ({ handleLoadMore }) => {
   const loading = useSelector(selectLoading);
   const hasMore = useSelector(selectHasMore);
-  
+
   return (
     <div className={css.container}>
       {loading && <p>Loading...</p>}

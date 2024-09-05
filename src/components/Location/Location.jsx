@@ -7,7 +7,7 @@ import { changeFilter } from "../../redux/filters/slice";
 const Location = () => {
   const locationFilter = useSelector(selectLocationFilter);
   const dispatch = useDispatch();
-  console.log(locationFilter);
+
   return (
     <div className={css.locationContainer}>
       <label>Location</label>

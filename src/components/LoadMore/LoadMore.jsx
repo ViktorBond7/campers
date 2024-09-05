@@ -8,7 +8,6 @@ const LoadMore = ({ handleLoadMore }) => {
   const hasMore = useSelector(selectHasMore);
   const filteredResults = useSelector(selectFilteredLocation);
   const hasResults = filteredResults.length > 0;
-  console.log(hasResults);
 
   return (
     <div className={css.container}>

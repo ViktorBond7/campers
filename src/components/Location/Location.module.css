@@ -1,7 +1,8 @@
 .locationContainer {
-  margin: 10px;
-  padding: 5px;
-
+  /* margin: 10px; */
+  /* padding: 5px; */
+  margin-bottom: 10px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
 }

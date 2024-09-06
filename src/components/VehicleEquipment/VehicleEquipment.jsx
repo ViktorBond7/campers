@@ -1,38 +1,48 @@
-// import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./VehicleEquipment.module.css";
 import { selectChangeVehicle } from "../../redux/filters/selectors";
-import { changeVehicle } from "../../redux/filters/slice";
+import { addVehicle, removeVehicle } from "../../redux/filters/slice";
+import { useCallback } from "react";
+
+import Equipment from "../Equipment/Equipment";
 
 const VehicleEquipment = () => {
-  const equipment = [
-    { id: 1, label: "AC", icon: "🌬️" },
-    { id: 2, label: "Automatic", icon: "🔧" },
-    { id: 3, label: "Kitchen", icon: "🍽️" },
-    { id: 4, label: "TV", icon: "📺" },
-    { id: 5, label: "Shower/WC", icon: "🚿" },
-  ];
-
   const dispatch = useDispatch();
   const visibleVehicle = useSelector(selectChangeVehicle);
 
   console.log("444444444444444", visibleVehicle);
 
+  //   const handleVehicleClick = (label) => {
+  //     dispatch(toggleVehicle(label));
+  //   };
+  const handleVehicleClick = useCallback(
+    (label) => {
+      if (visibleVehicle.includes(label)) {
+        dispatch(removeVehicle(label));
+      } else {
+        dispatch(addVehicle(label));
+      }
+    },
+    [visibleVehicle, dispatch]
+  );
+
   return (
     <div className={css.equipmentList}>
-      {equipment.map((item) => (
+      {Equipment.map((item) => (
         <label
           key={item.label}
           className={`${css.card} ${
             visibleVehicle.includes(item.label) ? css.selected : ""
           }`}
-          onClick={() => dispatch(changeVehicle(item.label))}
+          //   onClick={() => handleVehicleClick(item.label)}
         >
           <input
             type="checkbox"
-            checked={visibleVehicle}
-            onChange={() => dispatch(changeVehicle(item.label))}
+            checked={visibleVehicle.includes(item.label)}
+            onChange={() => handleVehicleClick(item.label)}
+            // onClick={() => handleVehicleClick(item.label)}
             className={css.hiddenCheckbox}
+            readOnly // Чекбокс readonly, щоб він не генерував події
           />
           <div className={css.icon}>{item.icon}</div>
           <div className={css.label}>{item.label}</div>
